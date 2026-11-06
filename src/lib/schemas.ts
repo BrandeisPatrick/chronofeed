@@ -38,7 +38,7 @@ export const directorEraLine = z.object({
   type: z.literal("era"),
   label: modelText(80),
   summary: modelText(400),
-  via: modelText(40).transform((v) => (/^via\b/i.test(v) ? v : `via ${v}`)),
+  via: modelText(40).transform((v) => (/^via\b/i.test(v) ? v : `via ${v}`).slice(0, 40)),
   trends: z
     .array(
       z.object({

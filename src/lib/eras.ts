@@ -13,6 +13,8 @@ export interface EraBand {
   /** Stable identifier, used for keys. */
   id: string;
   name: string;
+  /** Compact label for the band row under the track. */
+  short: string;
   /** First year of the band (inclusive). */
   start: number;
   /** Last year of the band; equal to the next band's start (shared edge). */
@@ -26,18 +28,18 @@ export interface EraBand {
 }
 
 export const ERAS: readonly EraBand[] = [
-  { id: "ancient", name: "Ancient World", start: -3000, end: -800, signature: -1250, accent: "#8a5a12", accentInkDark: "#e0b35a" },
-  { id: "classical", name: "Classical Antiquity", start: -800, end: 500, signature: -44, accent: "#a8432a", accentInkDark: "#f29a80" },
-  { id: "early-medieval", name: "Early Middle Ages", start: 500, end: 1000, signature: 800, accent: "#2f6b4f", accentInkDark: "#7fd3a8" },
-  { id: "late-medieval", name: "Late Middle Ages", start: 1000, end: 1450, signature: 1347, accent: "#a12b3c", accentInkDark: "#f4919f" },
-  { id: "renaissance", name: "Renaissance", start: 1450, end: 1650, signature: 1504, accent: "#2f4fb0", accentInkDark: "#9db2ff" },
-  { id: "enlightenment", name: "Enlightenment", start: 1650, end: 1800, signature: 1789, accent: "#7a4b9c", accentInkDark: "#cda6ee" },
-  { id: "industrial", name: "Industrial Age", start: 1800, end: 1900, signature: 1865, accent: "#6b4e3d", accentInkDark: "#d8b39b" },
-  { id: "world-wars", name: "World Wars", start: 1900, end: 1945, signature: 1929, accent: "#5b6620", accentInkDark: "#c6d47a" },
-  { id: "cold-war", name: "Cold War", start: 1945, end: 1991, signature: 1969, accent: "#3d5a80", accentInkDark: "#a3c0e6" },
-  { id: "internet", name: "Internet Age", start: 1991, end: 2030, signature: 2007, accent: "#0e7490", accentInkDark: "#6fd0e6" },
-  { id: "near-future", name: "Near Future", start: 2030, end: 2100, signature: 2077, accent: "#a2378f", accentInkDark: "#f096dc" },
-  { id: "far-future", name: "Far Future", start: 2100, end: 2500, signature: 2301, accent: "#4b4fc4", accentInkDark: "#aeb1ff" },
+  { id: "ancient", name: "Ancient World", short: "Ancient", start: -3000, end: -800, signature: -1250, accent: "#8a5a12", accentInkDark: "#e0b35a" },
+  { id: "classical", name: "Classical Antiquity", short: "Classical", start: -800, end: 500, signature: -44, accent: "#a8432a", accentInkDark: "#f29a80" },
+  { id: "early-medieval", name: "Early Middle Ages", short: "Early Med.", start: 500, end: 1000, signature: 800, accent: "#2f6b4f", accentInkDark: "#7fd3a8" },
+  { id: "late-medieval", name: "Late Middle Ages", short: "Late Med.", start: 1000, end: 1450, signature: 1347, accent: "#a12b3c", accentInkDark: "#f4919f" },
+  { id: "renaissance", name: "Renaissance", short: "Renaissance", start: 1450, end: 1650, signature: 1504, accent: "#2f4fb0", accentInkDark: "#9db2ff" },
+  { id: "enlightenment", name: "Enlightenment", short: "Enlightenment", start: 1650, end: 1800, signature: 1789, accent: "#7a4b9c", accentInkDark: "#cda6ee" },
+  { id: "industrial", name: "Industrial Age", short: "Industrial", start: 1800, end: 1900, signature: 1865, accent: "#6b4e3d", accentInkDark: "#d8b39b" },
+  { id: "world-wars", name: "World Wars", short: "World Wars", start: 1900, end: 1945, signature: 1929, accent: "#5b6620", accentInkDark: "#c6d47a" },
+  { id: "cold-war", name: "Cold War", short: "Cold War", start: 1945, end: 1991, signature: 1969, accent: "#3d5a80", accentInkDark: "#a3c0e6" },
+  { id: "internet", name: "Internet Age", short: "Internet", start: 1991, end: 2030, signature: 2007, accent: "#0e7490", accentInkDark: "#6fd0e6" },
+  { id: "near-future", name: "Near Future", short: "Near Future", start: 2030, end: 2100, signature: 2077, accent: "#a2378f", accentInkDark: "#f096dc" },
+  { id: "far-future", name: "Far Future", short: "Far Future", start: 2100, end: 2500, signature: 2301, accent: "#4b4fc4", accentInkDark: "#aeb1ff" },
 ];
 
 /** Converts a historical year (no year 0) to an astronomical one (1 BCE = 0). */
