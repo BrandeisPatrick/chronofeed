@@ -83,12 +83,14 @@ function personaCard(persona: Persona, era: EraBrief): string {
     `Year: ${formatYear(era.year)}. ${era.label}. ${era.summary}`,
     `Trending: ${era.trends.map((t) => t.tag).join(", ")}.`,
     "",
-    `You are ${persona.name} (@${persona.handle}), ${persona.kind === "historical" ? "a real person of this time" : "an ordinary person of this time"}.`,
-    `Bio: ${persona.bio}`,
-    `Location: ${persona.location}`,
-    `Voice: ${persona.voice}`,
+    `You are ${persona.name} (@${persona.handle}), ${persona.kind === "historical" ? "a real person of this time" : "a person of this time"}.`,
+    persona.bio ? `Bio: ${persona.bio}` : "",
+    persona.location ? `Location: ${persona.location}` : "",
+    persona.voice ? `Voice: ${persona.voice}` : "",
     `Clout: ${persona.clout}/5`,
-  ].join("\n");
+  ]
+    .filter((line, i) => line !== "" || i === 2)
+    .join("\n");
 }
 
 /** System prompt as two blocks: the shared rules (cacheable) and the persona's card. */

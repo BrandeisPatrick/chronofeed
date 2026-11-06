@@ -65,7 +65,7 @@ export function PostCard({ post, author, via, now, replies, liked, isReply, repl
           <button
             type="button"
             onClick={onReply}
-            aria-label={`Reply${replies ? `, ${replies} replies` : ""}`}
+            aria-label={`Reply${replies ? `, ${replies} ${replies === 1 ? "reply" : "replies"}` : ""}`}
             className="flex items-center gap-1.5 rounded-full px-2 py-1 outline-none hover:text-accent-ink focus-visible:ring-2 focus-visible:ring-accent"
           >
             <ReplyIcon />

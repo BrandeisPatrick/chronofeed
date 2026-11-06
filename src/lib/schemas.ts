@@ -50,16 +50,30 @@ export const directorEraLine = z.object({
     .transform((t) => t.slice(0, 6)),
 });
 
+/** An optional string from the model: missing or malformed becomes `fallback`. */
+const optionalModelText = (max: number, fallback = "") =>
+  z
+    .string()
+    .trim()
+    .transform((s) => s.slice(0, max) || fallback)
+    .catch(fallback);
+
+// Only handle and name are essential. A persona line with a missing bio, an
+// unexpected `kind` or no avatar is still usable, and dropping it would also
+// drop every post that persona wrote.
 export const directorPersonaLine = z.object({
   type: z.literal("persona"),
   handle: modelHandle,
   name: modelText(50),
-  bio: modelText(160),
-  location: modelText(60),
-  avatar: modelText(16),
-  kind: z.enum(["historical", "fictional"]),
-  voice: modelText(160),
-  clout: integerish.transform((n) => Math.min(5, Math.max(1, n))),
+  bio: optionalModelText(160),
+  location: optionalModelText(60),
+  avatar: optionalModelText(16, "👤"),
+  kind: z
+    .string()
+    .transform((k): "historical" | "fictional" => (k.trim().toLowerCase() === "historical" ? "historical" : "fictional"))
+    .catch("fictional"),
+  voice: optionalModelText(160),
+  clout: integerish.transform((n) => Math.min(5, Math.max(1, n))).catch(2),
 });
 
 export const directorPostLine = z.object({
